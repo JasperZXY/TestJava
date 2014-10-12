@@ -1,4 +1,4 @@
-package com.jasper.testStatic;
+package com.jasper.testKeyword.testStatic;
 
 public class TestStatic {
 	static {

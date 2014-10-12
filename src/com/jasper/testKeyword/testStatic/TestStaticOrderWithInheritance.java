@@ -1,4 +1,4 @@
-package com.jasper.testStatic;
+package com.jasper.testKeyword.testStatic;
 
 /**
  * 有继承关系存在时，static语句的执行顺序

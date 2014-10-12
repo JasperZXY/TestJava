@@ -1,4 +1,4 @@
-package com.jasper.testStatic;
+package com.jasper.testKeyword.testStatic;
 
 /**
  * static语句,构造代码块,构造方法的执行顺序
