@@ -1,4 +1,4 @@
-package com.jasper.testUtil1;
+package com.jasper.testUtil;
 
 public class User {
 	private int id;
