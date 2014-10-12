@@ -1,4 +1,4 @@
-package com.jasper.testutil;
+package com.jasper.testUtil;
 
 import java.util.HashMap;
 import java.util.Iterator;

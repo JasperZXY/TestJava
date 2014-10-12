@@ -1,4 +1,4 @@
-package com.jasper.testutil;
+package com.jasper.testUtil;
 
 import java.util.Arrays;
 
@@ -30,10 +30,10 @@ public class NewList<T> {
 	
 	public void remove(int index) {
 		if(index < 0) {
-			throw new IndexOutOfBoundsException("下标不能小于0");
+			throw new IndexOutOfBoundsException("锟铰标不锟斤拷小锟斤拷0");
 		}
 		if(index > cursor) {
-			throw new IndexOutOfBoundsException("下标太大");
+			throw new IndexOutOfBoundsException("锟铰憋拷太锟斤拷");
 		}
 	}
 	

@@ -1,4 +1,4 @@
-package com.jasper.sort;
+package com.jasper.arithmetic.sort;
 
 public class QuickSort {
 	public static void sort(int[] arr) {
