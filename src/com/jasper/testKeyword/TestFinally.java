@@ -1,12 +1,10 @@
 package com.jasper.testKeyword;
 
-import com.sun.tools.internal.ws.wsdl.document.jaxws.Exception;
-
 public class TestFinally {
 	public static void main(String[] args) {
 		Inner inner = getInner();
 		System.out.println(inner);
-		m();
+		System.out.println(m());
 	}
 	
 	public static Inner getInner() {
@@ -19,7 +17,17 @@ public class TestFinally {
 		}
 	}
 	
-	public static void m() {
+	public static int m() {
+		int a = 0;
+		try {
+			a = 1;
+			return a;
+		} catch (Exception e) {
+			a = 2;
+			return a;
+		} finally {
+			a = 3;
+		}
 	}
 	
 	static class Inner {
