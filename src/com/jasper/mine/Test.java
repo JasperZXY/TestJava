@@ -74,7 +74,7 @@ public class Test extends AAA implements aa {
 		list2.toArray(strings1);
 		System.out.println(strings1[0]);
 		System.out.println(format.format(new Date(System.currentTimeMillis() + 14400000000L)));
-		System.out.println(format.format(new Date(1412697810000L)));
+		System.out.println(format.format(new Date(1413374812000L)));
 		System.out.printf("12%%%n34");
 		System.out.println("===");
 		System.out.println(Integer.MAX_VALUE);

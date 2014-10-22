@@ -11,8 +11,10 @@ public class WebTest {
 	public static void main(String[] args) {
 		try {
 			for(int i=0; i<100; i++) {
-				String ret = web("http://mp.weixin.qq.com/s?__biz=MjM5NDQ5MDk4Ng==&mid=201081678&idx=2&sn=cda3f3e1bd37a40f6bb8a6cf4b070ea9&key=a607f98078cd05fea959b5862d93d186d17f21aeb3c42d02bc2bc522c5934796c49c27bb312c09cdbd2f500eadd13505&ascene=1&uin=MjY1OTQ1&pass_ticket=aJ%2Bz88u2b%2BOwUmq9Zwgk55z%2B%2FQWpVcbFztXHjW2B6sw%3D", "");
-				System.out.println(ret);
+				web("http://powersoft.iteye.com/blog/2145973", "");
+				System.out.println(i);
+//				String ret = web("http://mp.weixin.qq.com/s?__biz=MjM5NDQ5MDk4Ng==&mid=201081678&idx=2&sn=cda3f3e1bd37a40f6bb8a6cf4b070ea9&key=a607f98078cd05fea959b5862d93d186d17f21aeb3c42d02bc2bc522c5934796c49c27bb312c09cdbd2f500eadd13505&ascene=1&uin=MjY1OTQ1&pass_ticket=aJ%2Bz88u2b%2BOwUmq9Zwgk55z%2B%2FQWpVcbFztXHjW2B6sw%3D", "");
+//				System.out.println(ret);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
