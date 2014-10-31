@@ -18,6 +18,9 @@ public class TestList {
 		list.add("1");
 		list.add("1");
 		System.out.println(list.size());
+		List<String> list2 = (List<String>) list.clone();
+		System.out.println(list);
+		System.out.println(list2);
 		/*ArrayList<String> list = new ArrayList<String>();
 		list.add("aa");
 		System.out.println(list);
