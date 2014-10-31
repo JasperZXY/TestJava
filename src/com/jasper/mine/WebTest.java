@@ -1,14 +1,20 @@
 package com.jasper.mine;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class WebTest {
+	static String cookie = "";
 	private static final String[] urls = {
 			"http://powersoft.iteye.com/blog/2146313",
 			"http://powersoft.iteye.com/blog/2145973",
@@ -19,33 +25,39 @@ public class WebTest {
 			"http://powersoft.iteye.com/blog/2127040",
 			"http://powersoft.iteye.com/blog/2127029",
 			"http://powersoft.iteye.com/blog/2126868",
-			"http://powersoft.iteye.com/blog/2126831" };
+			"http://powersoft.iteye.com/blog/2147091",
+			"http://powersoft.iteye.com/blog/2126831",
+			"http://powersoft.iteye.com/blog/2147091", 
+			"http://powersoft.iteye.com/blog/2148407" };
 
 	public static void main(String[] args) {
-		try {
-			int i = 0;
-			while (true) {
-				System.out.println(++ i);
-				// for(int i=0; i<Integer.MAX_VALUE; i++) {
-				int index = new Random().nextInt(urls.length);
-				web(urls[index], "");
-				try {
-					if(i % 80 == 0) {
-						Thread.sleep((long) (600000 + Math.random() * 60000));
-					} else {
-						Thread.sleep((long) (Math.random() * 1000));
-					}
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				// String ret =
-				// web("http://mp.weixin.qq.com/s?__biz=MjM5NDQ5MDk4Ng==&mid=201081678&idx=2&sn=cda3f3e1bd37a40f6bb8a6cf4b070ea9&key=a607f98078cd05fea959b5862d93d186d17f21aeb3c42d02bc2bc522c5934796c49c27bb312c09cdbd2f500eadd13505&ascene=1&uin=MjY1OTQ1&pass_ticket=aJ%2Bz88u2b%2BOwUmq9Zwgk55z%2B%2FQWpVcbFztXHjW2B6sw%3D",
-				// "");
-				// System.out.println(ret);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		String cookie = "";
+//		try {
+//			FileReader fr = new FileReader("F:\\tmp\\iteye.txt");
+//			BufferedReader br = new BufferedReader(fr);
+//			cookie = br.readLine();
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println(cookie);
+//		int i = 0;
+//		while (true) {
+//			System.out.println(++ i);
+//			// for(int i=0; i<Integer.MAX_VALUE; i++) {
+//			try {
+//				int index = new Random().nextInt(urls.length);
+//				web(urls[index]);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				try {
+//					Thread.sleep(5000);
+//				} catch (InterruptedException e1) {
+//					e1.printStackTrace();
+//				}
+//			}
+//		}
 		// a();
 		// try {
 		// for(int i=0; i<1000; i++) {
@@ -74,26 +86,31 @@ public class WebTest {
 	public static void a() {
 		String ip = "http://172.16.41.249:8080/MovieTickets";
 		try {
-			String string = web(ip + "/app/movie/movie/listMovies", null);
+			String string = web(ip + "/app/movie/movie/listMovies");
 			System.out.println(string);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static String web(String url, String cookie) throws IOException {
+	public static String web(String url) throws IOException {
 		BufferedReader bis = null;
 		InputStream is = null;
 		try {
 			URLConnection connection = new URL(url).openConnection();
 			connection.setRequestProperty("Cookie", cookie);
-			connection.setRequestProperty("Content-Type",
-					"application/x-www-form-urlencoded; charset=UTF-8");
-			connection
-					.setRequestProperty("User-Agent",
-							"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)");
+			Random random = new Random();
+			connection.setRequestProperty("x-forwarded-for", 
+					String.valueOf(random.nextInt(255) + "." + random.nextInt(255) + "." + random.nextInt(198) + "." + random.nextInt(255)));
+			connection.setRequestProperty("Accept-Language", "zh-CN,zh;q=0.8");
+			connection.setRequestProperty("Accept-Encoding", "gzip,deflate,sdch");
+			connection.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
+			connection.setRequestProperty("User-Agent",
+							"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.11 YYE/2.3 Safari/537.36");
+//		"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)");
 			connection.setUseCaches(false);
 			connection.setDoOutput(true);
+			cookie = connection.getHeaderField("set-cookie");
 			is = connection.getInputStream();
 			bis = new BufferedReader(new InputStreamReader(is, "utf-8"));
 			String line = null;
@@ -120,10 +137,10 @@ public class WebTest {
 		}
 	}
 
-	public static String csdnBlog(String url) throws IOException {
-		return web(
-				url,
-				"__message_district_code=440000;  __utmz=17226283.1380523565.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)");
-	}
+//	public static String csdnBlog(String url) throws IOException {
+//		return web(
+//				url,
+//				"__message_district_code=440000;  __utmz=17226283.1380523565.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)");
+//	}
 
 }
