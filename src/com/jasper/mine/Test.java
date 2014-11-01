@@ -15,6 +15,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 public class Test extends AAA implements aa {
 	public final static String A_STRING = "String Test";
 	private static final String[] IMG_EXT = {".jpg", ".jpeg", ".png", ".gif", ".bmp"}; 
@@ -104,6 +106,12 @@ public class Test extends AAA implements aa {
 		System.out.println(dd == lll);
 		System.out.println(System.getProperty("user.home"));
 		System.out.println(System.getProperty("user.dir"));
+		System.out.println("﻿1".equals("﻿1"));
+		System.out.println(Long.valueOf("1"));
+		System.out.print("===");
+		byte[] b = {-17, -69, -65};
+		System.out.print(new String(b));
+		System.out.println("===");
 	}
 	
 	public static void mm(Map<String, Boolean> map) {
