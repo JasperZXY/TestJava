@@ -1,16 +1,11 @@
 package com.jasper.mine;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class WebTest {
@@ -31,56 +26,23 @@ public class WebTest {
 			"http://powersoft.iteye.com/blog/2148407" };
 
 	public static void main(String[] args) {
-//		String cookie = "";
-//		try {
-//			FileReader fr = new FileReader("F:\\tmp\\iteye.txt");
-//			BufferedReader br = new BufferedReader(fr);
-//			cookie = br.readLine();
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		System.out.println(cookie);
-//		int i = 0;
-//		while (true) {
-//			System.out.println(++ i);
-//			// for(int i=0; i<Integer.MAX_VALUE; i++) {
-//			try {
-//				int index = new Random().nextInt(urls.length);
-//				web(urls[index]);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//				try {
-//					Thread.sleep(5000);
-//				} catch (InterruptedException e1) {
-//					e1.printStackTrace();
-//				}
-//			}
-//		}
-		// a();
-		// try {
-		// for(int i=0; i<1000; i++) {
-		// System.out.println(i);
-		// //
-		// fetch_url("http://blog.csdn.net/zhongxianyao/article/details/11606235");
-		// //
-		// fetch_url("http://blog.csdn.net/zhongxianyao/article/details/11605923");
-		// //
-		// fetch_url("http://blog.csdn.net/zhongxianyao/article/details/11605473");
-		// //
-		// fetch_url("http://blog.csdn.net/zhongxianyao/article/details/11605233");
-		// //
-		// csdnBlog("http://blog.csdn.net/zhongxianyao/article/details/12294011");
-		// csdnBlog("http://blog.csdn.net/zhongxianyao/article/details/14091137");
-		// web("http://www.baidu.com/link?url=uyIsdbXalsX4QwdrVXvWct8OMFphAXPuNPyogmZ30lRwhWiztZdBFQ1K1uqxMCJQ",
-		// "");
-		// Thread.sleep((long) (Math.random()*1000));
-		// }
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
-
+		int count = 0;
+		int sum = urls.length;
+		Random random = new Random();
+		while(true) {
+			count ++;
+			System.out.println(count);
+			try {
+				web(urls[random.nextInt(sum)]);
+			} catch (IOException e) {
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public static void a() {
