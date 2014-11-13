@@ -33,6 +33,8 @@ public class Test extends AAA implements aa {
 	}
 
 	public static void main(String[] args) {
+		System.out.println("就是这个了");
+		System.out.println("就是%这个了");
 		System.out.println(A_STRING);
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(1990, 11, 31);

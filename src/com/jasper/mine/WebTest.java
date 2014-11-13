@@ -23,7 +23,8 @@ public class WebTest {
 			"http://powersoft.iteye.com/blog/2147091",
 			"http://powersoft.iteye.com/blog/2126831",
 			"http://powersoft.iteye.com/blog/2147091", 
-			"http://powersoft.iteye.com/blog/2148407" };
+			"http://powersoft.iteye.com/blog/2148407",
+			"http://powersoft.iteye.com/blog/2152019" };
 
 	public static void main(String[] args) {
 		int count = 0;
