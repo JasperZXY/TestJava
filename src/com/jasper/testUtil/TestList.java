@@ -9,6 +9,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.Test;
+
 import com.sun.tools.apt.resources.apt;
 import com.sun.tools.javac.resources.legacy;
 
@@ -100,5 +102,20 @@ public class TestList {
 		LinkedList<Integer> aIntegers= new LinkedList<Integer>();
 //		aIntegers.poll();
 		aIntegers.remove();
+	}
+	
+	@Test
+	public void testRemove() {
+		List<Integer> list1 = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5));
+		List<String> list2 = new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5"));
+		for (int i=0; i<list1.size(); i++) {
+			System.out.println(i + "->" + list1.get(i));
+			if (list1.get(i) == 2 || list1.get(i) == 5) {
+				list1.remove(i);
+				list2.remove(i);
+			}
+		}
+		System.out.println(list1);
+		System.out.println(list2);
 	}
 }
