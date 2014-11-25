@@ -1,4 +1,4 @@
-package com.jasper.testUtil;
+package com.jasper.testCollection;
 
 public class TestEnum {
 	public static void main(String[] args) {

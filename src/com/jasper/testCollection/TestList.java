@@ -1,4 +1,4 @@
-package com.jasper.testUtil;
+package com.jasper.testCollection;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
+
+import sun.util.logging.resources.logging;
 
 import com.sun.tools.apt.resources.apt;
 import com.sun.tools.javac.resources.legacy;
@@ -74,6 +76,17 @@ public class TestList {
 		user2.setId(0);
 		user2.setName("1");
 		user2.hashCode();
+		
+		addNull();
+	}
+	
+	public static void addNull() {
+		List<String> list = new ArrayList<String>();
+		list.add("1");
+		list.add(null);
+		list.add(null);
+		list.add("2");
+		System.out.println(list.size());
 	}
 	
 	public static void m(List<String> list) {
