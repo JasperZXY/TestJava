@@ -1,12 +1,7 @@
 package com.jasper.mine;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -14,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class Test extends AAA implements aa {
 	public final static String A_STRING = "String Test";
@@ -36,13 +29,7 @@ public class Test extends AAA implements aa {
 		System.out.println("就是这个了");
 		System.out.println("就是%这个了");
 		System.out.println(A_STRING);
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(1990, 11, 31);
-		calendar.add(calendar.DATE, 1);
-		System.out.println(calendar.get(Calendar.YEAR));
-		System.out.println(calendar.get(Calendar.MONTH));
-		System.out.println(calendar.get(Calendar.DATE));
-		System.out.println(Y.Z);
+		
 		new Test().b();
 		System.out.println(System.currentTimeMillis());
 		System.out.println(System.currentTimeMillis() + 24*60*60*1000);
@@ -63,30 +50,11 @@ public class Test extends AAA implements aa {
 		String[] strings = new String[list.size()];
 		list.toArray(strings);
 		System.out.println(strings[0] + strings[1]);
-		System.out.println(60*60*4);
-		System.out.println(System.currentTimeMillis());
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		try {
-			System.out.println(((Date)format.parseObject("2014-08-05 00:00:00")).getTime());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		String []strings1 = {"1", "2"};
 		List<String> list2 = Arrays.asList(strings1);
 		Collections.reverse(Arrays.asList(strings1));
 		list2.toArray(strings1);
 		System.out.println(strings1[0]);
-		System.out.println(format.format(new Date(System.currentTimeMillis() + 14400000000L)));
-		System.out.println(format.format(new Date(1411800006000L)));
-		System.out.println(format.format(new Date(1409855151472L)));
-		System.out.println(format.format(new Date(32503651200000L)));
-		try {
-			System.out.println(((Date)format.parseObject("3000-01-01 00:00:00")).getTime());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		System.out.printf("12%%%n34");
 		System.out.println("===");
 		System.out.println(Integer.MAX_VALUE);
@@ -96,7 +64,6 @@ public class Test extends AAA implements aa {
 		System.out.println(intToLong(-1));
 		System.out.println("\"123");
 		
-		System.out.println(System.currentTimeMillis());
 		long startTime = System.currentTimeMillis();
 		Set<String> set = new HashSet<String>();
 		for(int ii=0; ii<100000; ii++) {
@@ -107,8 +74,6 @@ public class Test extends AAA implements aa {
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
 		mm(map);
 		System.out.println(map.get("flag"));
-		System.out.println(new Date(Long.valueOf("54262906", 16) * 1000));
-		System.out.println(new Date(1411787023970L));
 		System.out.println(Long.toHexString(1411787023970L));
 		System.out.println(System.currentTimeMillis());
 		long lll = 12;
