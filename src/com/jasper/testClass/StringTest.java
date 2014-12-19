@@ -36,5 +36,6 @@ public class StringTest {
 		Arrays.sort(strings, Collator.getInstance(Locale.CHINA));
 		System.out.println(Arrays.asList(strings));
 		System.out.println(new StringTest(11).b);
+		System.out.println(String.format("this is %s, I'm %d", "Jasper", 19));
 	}
 }
