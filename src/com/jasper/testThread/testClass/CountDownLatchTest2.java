@@ -15,7 +15,7 @@ public class CountDownLatchTest2 {
 				public void run() {
 					System.out.println(Thread.currentThread().getName() + "start");
 					try {
-						Thread.sleep(1000);
+						Thread.sleep((long) (Math.random() * 1500));
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
