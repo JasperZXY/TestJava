@@ -1,5 +1,7 @@
 package com.jasper.testClass;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.List;
@@ -16,6 +18,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathFactory;
 
 import org.jdom.Document;
 import org.jdom.Element;
@@ -30,7 +34,8 @@ public class Xml {
 		String fileName = "F:\\tmp\\person.xml";
 		write(fileName);
 		read(fileName);
-		new Xml().readBySAX(fileName);
+		raadByXpath(fileName);
+//		new Xml().readBySAX(fileName);
 		System.out.println("end..............");
 	}
 
@@ -69,6 +74,7 @@ public class Xml {
 	}
 
 	public static void read(String fileName) {
+		System.out.println("read start");
 		SAXBuilder builder = new SAXBuilder();
 		try {
 			Document document = builder.build(fileName);
@@ -82,12 +88,31 @@ public class Xml {
 		} catch (JDOMException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("read end");
+	}
+	
+	public static void raadByXpath(String fileName) {
+		System.out.println("raadByXpath start");
+		try {
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			org.w3c.dom.Document document_ = db.parse(new FileInputStream(fileName));
+
+			XPathFactory xpathFactory = XPathFactory.newInstance();
+			XPath xpath_ = xpathFactory.newXPath();
+			
+			System.out.println(xpath_.compile("/华农/王老师").evaluate(document_));
+			System.out.println(xpath_.compile("/华农/李老师").evaluate(document_));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("raadByXpath end");
 	}
 	
 	public void readBySAX(String fileName) {
+		System.out.println("readBySAX start");
 		try {
 			SAXHandler handler = new SAXHandler();
 			SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
@@ -101,6 +126,7 @@ public class Xml {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println("readBySAX end");
 	}
 
 	@SuppressWarnings("deprecation")

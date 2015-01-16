@@ -31,7 +31,7 @@ public class TestTime {
 		System.out.println(format.format(new Date(1418644483863L)));
 		System.out.println(format.format(new Date(1418644810651L)));
 		System.out.println(format.format(new Date(1418787431148L)));
-		System.out.println(format.format(new Date(1418870458523L)));
+		System.out.println(format.format(new Date(1422719999999L)));
 	}
 
 }
