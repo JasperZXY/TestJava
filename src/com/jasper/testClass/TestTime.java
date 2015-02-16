@@ -11,7 +11,7 @@ public class TestTime {
 		System.out.println(System.currentTimeMillis());
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		try {
-			System.out.println(((Date)format.parseObject("2014-11-04 24:00")).getTime());
+			System.out.println(((Date)format.parseObject("2015-01-29 11:00")).getTime());
 			System.out.println(((Date)format.parseObject("2014-11-04 24:00")));
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -27,11 +27,12 @@ public class TestTime {
 		System.out.println(calendar.get(Calendar.MONTH));
 		System.out.println(calendar.get(Calendar.DATE));
 		
-		System.out.println(format.format(new Date(1418581053000L)));
-		System.out.println(format.format(new Date(1418644483863L)));
-		System.out.println(format.format(new Date(1418644810651L)));
-		System.out.println(format.format(new Date(1418787431148L)));
-		System.out.println(format.format(new Date(1422719999999L)));
+		System.out.println(format.format(new Date(1422497100000L)));
+		System.out.println(format.format(new Date(1422497100000L + 1000 * 10590900)));
+		
+		System.out.println(format.format(new Date(1423101097900L)));
+		System.out.println(format.format(new Date(1423410660000L)));
+		
 	}
 
 }

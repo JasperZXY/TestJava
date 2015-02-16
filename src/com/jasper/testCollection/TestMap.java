@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
+import java.util.TreeMap;
 
 public class TestMap {
 	
@@ -17,6 +17,7 @@ public class TestMap {
 		m1();
 		m2();
 		m3();
+		m4();
 	}
 	
 	public static void m1() {
@@ -64,5 +65,21 @@ public class TestMap {
 			System.out.println(entry.getKey() + "->" + entry.getValue());
 		}
 		System.out.println("===================第三种变量map的方式==================");
+	}
+	
+	public static void m4() {
+		System.out.println("===================TreeMap==================");
+		Map<String, String> map = new TreeMap<String, String>();
+		map.put("1", "111");
+		map.put("3", "333");
+		map.put("2", "2222");
+		map.put("5", "5555");
+		map.put("4", "4444");
+		Iterator<Entry<String, String>> iterator = map.entrySet().iterator();
+		while(iterator.hasNext()) {
+			Entry<String, String> entry = iterator.next();
+			System.out.println(entry.getKey() + "->" + entry.getValue());
+		}
+		System.out.println("===================TreeMap==================");
 	}
 }
