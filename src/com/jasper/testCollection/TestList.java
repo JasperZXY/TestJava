@@ -131,4 +131,16 @@ public class TestList {
 		System.out.println(list1);
 		System.out.println(list2);
 	}
+	
+	@Test
+	public void testSet() {
+		List<Integer> list = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5));
+		System.out.println(list);
+		for (int i=0; i<list.size(); i++) {
+			if (list.get(i) == 3) {
+				list.set(i, 111);
+			}
+		}
+		System.out.println(list);
+	}
 }

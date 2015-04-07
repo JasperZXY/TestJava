@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadTimer {
 	public static void main(String[] args) {
-		ScheduledExecutorService timer = Executors.newScheduledThreadPool(3);
+		ScheduledExecutorService timer = Executors.newScheduledThreadPool(2);
 		timer.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
