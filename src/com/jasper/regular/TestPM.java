@@ -5,7 +5,11 @@ import java.util.regex.Pattern;
 
 public class TestPM {
 	public static void main(String []args) {
-		m17();
+//		m17();
+		isNum("123");
+		isNum("789a");
+		isNum("a789");
+		isNum("7a89");
 	}
 	
 	/**
@@ -235,5 +239,12 @@ b
 		Pattern pattern = Pattern.compile("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
 		Matcher matcher = pattern.matcher("zhon+g-xianyao@ll.com");
 		System.out.println(matcher.matches());
+	}
+	
+	public static void isNum(String str) {
+		Pattern pattern = Pattern.compile("^[0-9]*$");
+		Matcher matcher = pattern.matcher(str);
+		boolean b = matcher.matches();
+		System.out.println(b);
 	}
 }

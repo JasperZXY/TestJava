@@ -17,7 +17,7 @@ public class TestSet {
 //		String bString = "bb";
 //		System.out.println(set.contains(bString));
 //		TreeSet<String> aa = new TreeSet<String>();
-		m();
+		m1();
 	}
 	
 	public static void m() {
@@ -38,6 +38,25 @@ public class TestSet {
 		for(User user : users) {
 			System.out.println(user.getId() + " " + user.getName());
 		}
+	}
+	
+	public static void m1() {
+		Set<String> set = new HashSet<>();
+		long curTime = System.currentTimeMillis();
+		for (int i=0; i<1000 * 10000; i++) {
+			set.add(Integer.toString(i));
+		}
+		System.out.println(System.currentTimeMillis() - curTime);
+		
+		curTime = System.currentTimeMillis();
+		for (String str : set) {
+			dosomething(str);
+		}
+		System.out.println(System.currentTimeMillis() - curTime);
+	}
+	
+	public static void dosomething(String str) {
+		
 	}
 	
 }

@@ -1,5 +1,8 @@
 package com.jasper.regular;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import org.junit.Test;
 
 public class StringReg {
@@ -7,9 +10,15 @@ public class StringReg {
 	@Test
 	public void html() {
 		System.out.println("====");
-		System.out.println("<div class=\"red\">很好</div>".replaceAll("<.*>", ""));
-		System.out.println("<div class=\"red\">很好</div>".replaceAll("<[^>]*>", ""));
+		System.out.println("1<div class=\"red\">很好</div>".replaceAll("<.*>", ""));
+		System.out.println("2<div class=\"red\">很好</div>".replaceAll("<[^>]*>", ""));
+		System.out.println("3<div class=\"red\">很好</div>".replaceAll("[[:alnum:]]", "#"));
 		System.out.println("====");
+		try {
+			System.out.println(URLEncoder.encode("=", "UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test

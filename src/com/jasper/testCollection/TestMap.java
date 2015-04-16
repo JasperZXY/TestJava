@@ -6,6 +6,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
+import org.junit.Test;
+
+import com.sun.tools.jdi.LinkedHashMap;
+
 public class TestMap {
 	
 	public static void main(String []args) {
@@ -81,5 +85,23 @@ public class TestMap {
 			System.out.println(entry.getKey() + "->" + entry.getValue());
 		}
 		System.out.println("===================TreeMap==================");
+	}
+	
+	@Test
+	public void m5() {
+		Map<String, Object> map = new HashMap<>();
+		map.put("1", 111);
+		map.put("3", 333);
+		map.put("2", 2222);
+		map.put("5", 5555);
+		System.out.println(map);
+		
+		Map<Object, Object> linkMap = new LinkedHashMap();
+		linkMap.putAll(map);
+		System.out.println(linkMap);
+		
+		Map<String, Object> treeMap = new TreeMap<>(map);
+		System.out.println(treeMap);
+		
 	}
 }
