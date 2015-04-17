@@ -28,12 +28,6 @@ public class TestTime {
 		System.out.println(calendar.get(Calendar.DATE));
 		
 		System.out.println(format.format(new Date(1422497100000L)));
-		System.out.println(format.format(new Date(1422497100000L + 1000 * 10590900)));
-		
-		System.out.println(format.format(new Date(1423101097900L)));
-		System.out.println(format.format(new Date(1426500019384L)));
-		System.out.println(System.currentTimeMillis());
-		System.out.println(Float.MAX_VALUE);
 		
 	}
 

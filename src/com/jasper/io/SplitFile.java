@@ -48,18 +48,21 @@ public class SplitFile {
 //            split(br, "F:\\\\tmp\\uid\\uid-12号-02-120w.txt", 1200000);
             
             
-          //这里配置的是100M最大一个文件的
-            split(br, "F:\\\\tmp\\uid\\100M\\uid-8号-1kw.txt", 10000000);
+          //这里配置的是_100M最大一个文件的
+            split(br, "F:\\\\tmp\\uid\\_100M\\uid-8号-1kw.txt", 10000000);
             
-            split(br, "F:\\\\tmp\\uid\\100M\\uid-9号-1-500w.txt", 5000000);
-            split(br, "F:\\\\tmp\\uid\\100M\\uid-9号-2-500w.txt", 5000000);
-            split(br, "F:\\\\tmp\\uid\\100M\\uid-9号-3-500w.txt", 5000000);
+            split(br, "F:\\\\tmp\\uid\\_100M\\uid-9号-1-500w.txt", 5000000);
+            split(br, "F:\\\\tmp\\uid\\_100M\\uid-9号-2-500w.txt", 5000000);
+            split(br, "F:\\\\tmp\\uid\\_100M\\uid-9号-3-500w.txt", 5000000);
+            split(br, "F:\\\\tmp\\uid\\_100M\\uid-9号-4-500w.txt", 5000000);
+            split(br, "F:\\\\tmp\\uid\\_100M\\uid-9号-5-500w.txt", 5000000);
             
-            split(br, "F:\\\\tmp\\uid\\100M\\uid-10号-1kw.txt", 10000000);
+            split(br, "F:\\\\tmp\\uid\\_100M\\uid-10号-1-500w.txt", 5000000);
+            split(br, "F:\\\\tmp\\uid\\_100M\\uid-10号-2-500w.txt", 5000000);
             
-            split(br, "F:\\\\tmp\\uid\\100M\\uid-11号-250w.txt", 2500000);
+            split(br, "F:\\\\tmp\\uid\\_100M\\uid-11号-250w.txt", 2500000);
             
-            split(br, "F:\\\\tmp\\uid\\100M\\uid-12号-250w.txt", 2500000);
+            split(br, "F:\\\\tmp\\uid\\_100M\\uid-12号-250w.txt", 2500000);
             
 		} catch (Exception e) {
             e.printStackTrace();
