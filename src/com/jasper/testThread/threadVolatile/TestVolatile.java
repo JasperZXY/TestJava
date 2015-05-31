@@ -32,8 +32,13 @@ class UnsafeThread implements Runnable {
 
 	@Override
 	public void run() {
-		for(int i=0; i<1000; i++) {
-			Math.hypot(Math.pow(13123, i), Math.cos(i));
+//		for(int i=0; i<1000; i++) {
+//			Math.hypot(Math.pow(13123, i), Math.cos(i));
+//		}
+		try {
+			Thread.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 		count ++;
 	}

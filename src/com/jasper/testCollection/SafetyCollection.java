@@ -1,6 +1,7 @@
 package com.jasper.testCollection;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.concurrent.Executors;
 import org.junit.Test;
 
 /**
- * 待研究，居然运行没错
+ * 重新new的集合在多线程里是可以遍历的
  * @author Jasper
  *
  */

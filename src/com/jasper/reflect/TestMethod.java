@@ -10,7 +10,7 @@ public class TestMethod {
 //		 System.out.println(charAt.invoke(str, 1));
 //		 System.out.println(str.charAt(1));
 		 
-		 Method mainMethod = Class.forName("ReflectPoint").getMethod("main", String[].class);
+		 Method mainMethod = Class.forName("com.jasper.reflect.ReflectPoint").getMethod("main", String[].class);
 		 mainMethod.invoke(null, (Object)new String[]{});
 		 System.out.println(mainMethod.getAnnotation(Override.class));
 	}
