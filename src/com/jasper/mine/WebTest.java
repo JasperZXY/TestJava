@@ -27,22 +27,27 @@ public class WebTest {
 			"http://powersoft.iteye.com/blog/2152019" };
 
 	public static void main(String[] args) {
-		int count = 0;
-		int sum = urls.length;
-		Random random = new Random();
-		while(true) {
-			count ++;
-			System.out.println(count);
-			try {
-				web(urls[random.nextInt(sum)]);
-			} catch (IOException e) {
-				try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
-				e.printStackTrace();
-			}
+//		int count = 0;
+//		int sum = urls.length;
+//		Random random = new Random();
+//		while(true) {
+//			count ++;
+//			System.out.println(count);
+//			try {
+//				web(urls[random.nextInt(sum)]);
+//			} catch (IOException e) {
+//				try {
+//					Thread.sleep(5000);
+//				} catch (InterruptedException e1) {
+//					e1.printStackTrace();
+//				}
+//				e.printStackTrace();
+//			}
+//		}
+		try {
+			System.out.println(web("http://127.0.0.1:8000/test/asyncMethod"));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
