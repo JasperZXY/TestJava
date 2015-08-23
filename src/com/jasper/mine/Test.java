@@ -17,36 +17,60 @@ import javax.management.ObjectName;
 
 public class Test {
 	public static void main(String[] args) {
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		try {
-			System.out.println(format.parse("2015-05-12 03:01:00").getTime() / 1000);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		System.out.println(format.format(new Date(1000L * 1431977409)));
-		System.out.println(format.format(new Date(System.currentTimeMillis() - 3 * 24 * 3600 * 1000)));
-		
-		System.out.println("http://szhuodong.duowan.com/s/yynews3/index.html?code=YYXX_NCSHIVT_CFIVyyqb_shxbIVNUANCHUNIV*from=from_link_YYXX ".trim() + "=");
-		System.out.println(Arrays.toString(" ".getBytes()));
-		System.out.println(Arrays.toString(" ".getBytes()));
-		System.out.println(Arrays.toString(" ".getBytes()));
-		
-//		ProcessBuilder pb = new ProcessBuilder( "cmd.exe", "/c", "ping", "-n", "1", "172.0.0.1");
-//		Process process;
+//		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //		try {
-//			process = pb.start();
-//			System.out.println(process);
-//			System.out.println(loadStream(process.getInputStream()));
-//		} catch (IOException e) {
+//			System.out.println(format.parse("2015-05-12 03:01:00").getTime() / 1000);
+//		} catch (ParseException e) {
 //			e.printStackTrace();
 //		}
-		
-		System.out.println("===" + System.getProperty("line.separator") + "===");
-		
-		System.out.println(Test.class.getResource("/"));
-		System.out.println(Test.class.getResource("/").getPath());
-		System.out.println(Test.class.getResource("/").getFile());
+//		System.out.println(format.format(new Date(1000L * 1431977409)));
+//		System.out.println(format.format(new Date(System.currentTimeMillis() - 3 * 24 * 3600 * 1000)));
+//		
+//		System.out.println("http://szhuodong.duowan.com/s/yynews3/index.html?code=YYXX_NCSHIVT_CFIVyyqb_shxbIVNUANCHUNIV*from=from_link_YYXX ".trim() + "=");
+//		System.out.println(Arrays.toString(" ".getBytes()));
+//		System.out.println(Arrays.toString(" ".getBytes()));
+//		System.out.println(Arrays.toString(" ".getBytes()));
+//		
+////		ProcessBuilder pb = new ProcessBuilder( "cmd.exe", "/c", "ping", "-n", "1", "172.0.0.1");
+////		Process process;
+////		try {
+////			process = pb.start();
+////			System.out.println(process);
+////			System.out.println(loadStream(process.getInputStream()));
+////		} catch (IOException e) {
+////			e.printStackTrace();
+////		}
+//		
+//		System.out.println("===" + System.getProperty("line.separator") + "===");
+//		
+//		System.out.println(Test.class.getResource("/"));
+//		System.out.println(Test.class.getResource("/").getPath());
+//		System.out.println(Test.class.getResource("/").getFile());
+//		
+		for (int i=0; i<10; i++) {
+			final int a = i;
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					System.out.println(multiThread(a) + x + y);
+				}
+			}).start();
+		}
 	}
+	
+	static int x;
+	static int y;
+	
+	public static String multiThread(int i) {
+		x = i;
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        y = i + i;
+        return String.format("ret [%d]:[%s]", i, Thread.currentThread().getName());
+    }
 	
 	
 	public static String loadStream(InputStream in) throws IOException {
