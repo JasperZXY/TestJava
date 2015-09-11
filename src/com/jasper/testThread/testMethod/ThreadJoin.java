@@ -10,6 +10,11 @@ public class ThreadJoin implements Runnable {
 
 	public void run() {
 		for (int i = 0; i < 5; i++) {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			inc();
 		}
 	}
@@ -20,6 +25,7 @@ public class ThreadJoin implements Runnable {
 		Thread t1 = new Thread(r);
 		t1.start();
 
+		System.out.println("======");
 		//让t1执行完后再去获取a的值，这样才能获得到正确的值
 		t1.join();
 		System.out.println(a);
