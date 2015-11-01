@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class TestPM {
 	public static void main(String []args) {
-//		m17();
+		m1();
 		isNum("123");
 		isNum("789a");
 		isNum("a789");
