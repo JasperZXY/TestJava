@@ -1,22 +1,14 @@
 package com.jasper.testCollection;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.junit.Test;
-
-import sun.util.logging.resources.logging;
-
-import com.sun.tools.apt.resources.apt;
-import com.sun.tools.javac.resources.legacy;
 
 public class TestList {
 	public static void main(String []args) {
