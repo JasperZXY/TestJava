@@ -7,7 +7,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.junit.Test;
 
@@ -130,6 +132,15 @@ public class TestList {
 		}
 		System.out.println(list1);
 		System.out.println(list2);
+		
+		list2 = new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5"));
+		list2 = new CopyOnWriteArrayList<>(list2);
+		for (String string : list2) {
+			if ("2".equals(string)) {
+				list2.remove(string);
+			}
+		}
+		System.out.println(list2);
 	}
 	
 	@Test
@@ -142,5 +153,34 @@ public class TestList {
 			}
 		}
 		System.out.println(list);
+	}
+	
+	@Test
+	public void testFind() {
+		List<Integer> list = new ArrayList<>();
+		Random random = new Random();
+		for (int i=0; i<1000_000; i++) {
+			list.add(random.nextInt(10_000));
+		}
+		
+		long curTime = 0;
+		curTime = System.currentTimeMillis();
+		int max1 = Integer.MIN_VALUE;
+		for (int i=0; i<100_000; i++) {
+			int cur = list.get(i);
+			if (cur > max1) {
+				max1 = cur;
+			}
+		}
+		System.out.println("max:" + max1 + " time:" + (System.currentTimeMillis() - curTime));
+		
+		curTime = System.currentTimeMillis();
+		int max2 = Integer.MIN_VALUE;
+		for (int cur : list) {
+			if (cur > max2) {
+				max2 = cur;
+			}
+		}
+		System.out.println("max:" + max2 + " time:" + (System.currentTimeMillis() - curTime));
 	}
 }
