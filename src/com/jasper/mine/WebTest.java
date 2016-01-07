@@ -45,7 +45,7 @@ public class WebTest {
 //			}
 //		}
 		try {
-			System.out.println(web("http://127.0.0.1:8000/test/asyncMethod"));
+			System.out.println(web("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=14.145.146.29"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
