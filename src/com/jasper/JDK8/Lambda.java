@@ -5,6 +5,13 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * <strong>Lambda 表达式</strong><br/>
+ * 可以使代码代码变得更短，具有可读性
+ * 
+ * @author Jasper
+ *
+ */
 public class Lambda {
 	public static void main(String[] args) {
 		//旧版本排序
