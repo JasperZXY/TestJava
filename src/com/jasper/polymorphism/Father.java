@@ -1,4 +1,4 @@
-package com.jasper.duotai;
+package com.jasper.polymorphism;
 
 public class Father {
 	private int id;
