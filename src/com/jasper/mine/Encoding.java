@@ -5,9 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
 public class Encoding {
 	public static void main(String[] args) {
 		String fileName = System.getProperty("user.dir") + "\\file\\a.txt";

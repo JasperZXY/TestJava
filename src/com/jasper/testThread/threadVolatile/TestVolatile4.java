@@ -11,6 +11,7 @@ public class TestVolatile4 {
 
 	public void test() {
 		Thread t1 = new Thread() {
+			@Override
 			public void run() {
 				do {
 				} while (n1 >= n2);
@@ -18,6 +19,7 @@ public class TestVolatile4 {
 			}
 		};
 		Thread t2 = new Thread() {
+			@Override
 			public void run() {
 				for (; n1 < 100000;) {
 					++n1;

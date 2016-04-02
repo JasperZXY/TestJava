@@ -14,6 +14,7 @@ public class Counter3 extends Applet implements Runnable {
 	private Button onOff = new Button("Toggle"), start = new Button("Start");
 	private TextField t = new TextField(10);
 
+	@Override
 	public void init() {
 		add(t);
 		start.addActionListener(new StartL());
@@ -22,10 +23,11 @@ public class Counter3 extends Applet implements Runnable {
 		add(onOff);
 	}
 
+	@Override
 	public void run() {
 		while (true) {
 			try {
-				selfThread.sleep(100);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 			}
 			if (runFlag)
@@ -34,6 +36,7 @@ public class Counter3 extends Applet implements Runnable {
 	}
 
 	class StartL implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (selfThread == null) {
 				selfThread = new Thread(Counter3.this);
@@ -43,6 +46,7 @@ public class Counter3 extends Applet implements Runnable {
 	}
 
 	class OnOffL implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			runFlag = !runFlag;
 		}
@@ -52,6 +56,7 @@ public class Counter3 extends Applet implements Runnable {
 		Counter3 applet = new Counter3();
 		Frame aFrame = new Frame("Counter3");
 		aFrame.addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}

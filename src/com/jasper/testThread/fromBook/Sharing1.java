@@ -23,6 +23,7 @@ class TwoCounter extends Thread {
 		c.add(p);
 	}
 
+	@Override
 	public void start() {
 		if (!started) {
 			started = true;
@@ -30,6 +31,7 @@ class TwoCounter extends Thread {
 		}
 	}
 
+	@Override
 	public void run() {
 		while (true) {
 			t1.setText(Integer.toString(count1++));
@@ -56,6 +58,7 @@ class Watcher extends Thread {
 		start();
 	}
 
+	@Override
 	public void run() {
 		while (true) {
 			for (int i = 0; i < p.s.length; i++)
@@ -84,6 +87,7 @@ public class Sharing1 extends Applet {
 	private int numCounters = 0;
 	private int numObservers = 0;
 
+	@Override
 	public void init() {
 		if (isApplet) {
 			numCounters = Integer.parseInt(getParameter("size"));
@@ -103,6 +107,7 @@ public class Sharing1 extends Applet {
 	}
 
 	class StartL implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			for (int i = 0; i < s.length; i++)
 				s[i].start();
@@ -110,6 +115,7 @@ public class Sharing1 extends Applet {
 	}
 
 	class ObserverL implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			for (int i = 0; i < numObservers; i++)
 				new Watcher(Sharing1.this);
@@ -125,6 +131,7 @@ public class Sharing1 extends Applet {
 		applet.numObservers = (args.length < 2 ? 5 : Integer.parseInt(args[1]));
 		Frame aFrame = new Frame("Sharing1");
 		aFrame.addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}

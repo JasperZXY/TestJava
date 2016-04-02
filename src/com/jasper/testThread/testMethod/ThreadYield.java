@@ -1,7 +1,5 @@
 package com.jasper.testThread.testMethod;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * 线程的礼让
  * @author Jasper
@@ -14,7 +12,8 @@ public class ThreadYield implements Runnable {
 			System.out.println("当前线程" + Thread.currentThread().getName() + " " + i);
 //			if(i == 6) {
 				System.out.println("当前线程" + Thread.currentThread().getName() + "线程礼让");
-				Thread.currentThread().yield();
+				Thread.currentThread();
+				Thread.yield();
 //				try {
 //					TimeUnit.MILLISECONDS.sleep(2000);
 //				} catch (InterruptedException e) {

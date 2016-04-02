@@ -19,11 +19,13 @@ class Ticker extends Thread {
 	}
 
 	class ToggleL implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			runFlag = !runFlag;
 		}
 	}
 
+	@Override
 	public void run() {
 		while (true) {
 			if (runFlag)
@@ -43,6 +45,7 @@ public class Counter4 extends Applet {
 	private boolean isApplet = true;
 	private int size;
 
+	@Override
 	public void init() {
 		// Get parameter "size" from Web page:
 		if (isApplet)
@@ -55,6 +58,7 @@ public class Counter4 extends Applet {
 	}
 
 	class StartL implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (!started) {
 				started = true;
@@ -72,6 +76,7 @@ public class Counter4 extends Applet {
 		applet.size = (args.length == 0 ? 5 : Integer.parseInt(args[0]));
 		Frame aFrame = new Frame("Counter4");
 		aFrame.addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}

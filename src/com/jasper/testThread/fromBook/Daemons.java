@@ -13,6 +13,7 @@ class Daemon extends Thread {
 		start();
 	}
 
+	@Override
 	public void run() {
 		for (int i = 0; i < SIZE; i++)
 			t[i] = new DaemonSpawn(i);
@@ -29,6 +30,7 @@ class DaemonSpawn extends Thread {
 		start();
 	}
 
+	@Override
 	public void run() {
 		while (true)
 			yield();

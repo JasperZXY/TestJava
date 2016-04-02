@@ -18,6 +18,7 @@ class RoundGlyph extends Glyph {
 		System.out.println("RoundGlyph.RoundGlyph(), radius = " + radius);
 	}
 
+	@Override
 	void draw() {
 		System.out.println("RoundGlyph.draw(), radius = " + radius);
 	}

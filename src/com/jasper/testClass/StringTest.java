@@ -1,6 +1,5 @@
 package com.jasper.testClass;
 
-import java.io.UnsupportedEncodingException;
 import java.text.Collator;
 import java.util.Arrays;
 import java.util.Locale;

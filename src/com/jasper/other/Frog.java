@@ -12,6 +12,7 @@ class Characteristic {
 		System.out.println("Creating Characteristic " + s);
 	}
 
+	@Override
 	protected void finalize() {
 		System.out.println("finalizing Characteristic " + s);
 	}
@@ -24,6 +25,7 @@ class LivingCreature {
 		System.out.println("LivingCreature()");
 	}
 
+	@Override
 	protected void finalize() {
 		System.out.println("LivingCreature finalize");
 		// Call base-class version LAST!
@@ -42,6 +44,7 @@ class Animal extends LivingCreature {
 		System.out.println("Animal()");
 	}
 
+	@Override
 	protected void finalize() {
 		System.out.println("Animal finalize");
 		if (DoBaseFinalization.flag)
@@ -59,6 +62,7 @@ class Amphibian extends Animal {
 		System.out.println("Amphibian()");
 	}
 
+	@Override
 	protected void finalize() {
 		System.out.println("Amphibian finalize");
 		if (DoBaseFinalization.flag)
@@ -74,6 +78,7 @@ public class Frog extends Amphibian {
 		System.out.println("Frog()");
 	}
 
+	@Override
 	protected void finalize() {
 		System.out.println("Frog finalize");
 		if (DoBaseFinalization.flag)

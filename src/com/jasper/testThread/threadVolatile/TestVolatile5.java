@@ -6,6 +6,7 @@ public class TestVolatile5 extends Thread {
 	// volatile标志
 	private static volatile boolean flag2 = false;
 	private int i = 0;
+	@Override
 	public void run() {
 		//Object o = new Object();
 		//synchronized (o) {
@@ -31,17 +32,19 @@ public class TestVolatile5 extends Thread {
 		TestVolatile5 t = new TestVolatile5();
 		t.start();
 		try {
-			Thread.currentThread().sleep(10);
+			Thread.currentThread();
+			Thread.sleep(10);
 			System.out.println("=============================111111");
 			// 先更改flag1
-			t.flag1 = true;
+			TestVolatile5.flag1 = true;
+			Thread.currentThread();
 			/*
 			 * 注释3
 			 */
-			Thread.currentThread().sleep(1000);
+			Thread.sleep(1000);
 			// 将flag2置为true，如果有机会进入if(flag2),则将退出循环
 			System.out.println("=============================222222");
-			t.flag2 = false;
+			TestVolatile5.flag2 = false;
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

@@ -10,6 +10,7 @@ public class Counter1 extends Applet {
 	private TextField t = new TextField(10);
 	private boolean runFlag = true;
 
+	@Override
 	public void init() {
 		add(t);
 		start.addActionListener(new StartL());
@@ -21,7 +22,8 @@ public class Counter1 extends Applet {
 	public void go() {
 		while (true) {
 			try {
-				Thread.currentThread().sleep(100);
+				Thread.currentThread();
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 			}
 			if (runFlag)
@@ -30,12 +32,14 @@ public class Counter1 extends Applet {
 	}
 
 	class StartL implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			go();
 		}
 	}
 
 	class OnOffL implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			runFlag = !runFlag;
 		}
@@ -45,6 +49,7 @@ public class Counter1 extends Applet {
 		Counter1 applet = new Counter1();
 		Frame aFrame = new Frame("Counter1");
 		aFrame.addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}

@@ -1,7 +1,8 @@
 package com.jasper.testThread;
 
 public class Thread1 implements Runnable {  
-    public void run() {  
+    @Override
+	public void run() {  
          synchronized(this) {  
               for (int i = 0; i < 5; i++) {  
                    System.out.println(Thread.currentThread().getName() + " synchronized loop " + i);  

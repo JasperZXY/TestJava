@@ -30,10 +30,12 @@ class VeryBig {
 		la = new double[s];
 	}
 
+	@Override
 	public String toString() {
 		return ident;
 	}
 
+	@Override
 	protected void finalize() {
 		System.out.println("Finalizing " + ident);
 	}

@@ -61,6 +61,7 @@ public class GetNameTest {
 		// TODO Auto-generated method stub
 		TreeSet sortedResults = new TreeSet(
 				new Comparator(){
+					@Override
 					public int compare(Object o1, Object o2) {
 						// TODO Auto-generated method stub
 						User user1 = (User)o1;

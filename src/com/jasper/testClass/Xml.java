@@ -1,6 +1,5 @@
 package com.jasper.testClass;
 
-import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Hashtable;
@@ -143,16 +142,19 @@ public class Xml {
 			return table;
 		}
 
+		@Override
 		public void startElement(String tag, AttributeList attrs)
 				throws SAXException {
 			currentElement = tag;
 		}
 
+		@Override
 		public void characters(char[] ch, int start, int length)
 				throws SAXException {
 			currentValue = new String(ch, start, length);
 		}
 
+		@Override
 		public void endElement(String name) throws SAXException {
 			if (currentElement.equals(name))
 				table.put(currentElement, currentValue);

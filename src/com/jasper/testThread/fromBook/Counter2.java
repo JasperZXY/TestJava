@@ -18,6 +18,7 @@ class SeparateSubTask extends Thread {
 		runFlag = !runFlag;
 	}
 
+	@Override
 	public void run() {
 		while (true) {
 			try {
@@ -35,6 +36,7 @@ public class Counter2 extends Applet {
 	private SeparateSubTask sp = null;
 	private Button onOff = new Button("Toggle"), start = new Button("Start");
 
+	@Override
 	public void init() {
 		add(t);
 		start.addActionListener(new StartL());
@@ -44,6 +46,7 @@ public class Counter2 extends Applet {
 	}
 
 	class StartL implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (sp == null)
 				sp = new SeparateSubTask(Counter2.this);
@@ -51,6 +54,7 @@ public class Counter2 extends Applet {
 	}
 
 	class OnOffL implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (sp != null)
 				sp.invertFlag();
@@ -61,6 +65,7 @@ public class Counter2 extends Applet {
 		Counter2 applet = new Counter2();
 		Frame aFrame = new Frame("Counter2");
 		aFrame.addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}

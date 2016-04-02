@@ -10,7 +10,8 @@ public   class  TestVolatile3 {
     public   static   void  main(String[] args) {      
         final  TestVolatile3 volObj= new  TestVolatile3();      
         Thread t1=new  Thread(){      
-            public   void  run(){      
+            @Override
+			public   void  run(){      
                 System.out.println("t1 start" );      
                 for (;;){      
                         volObj.waitToExit();
@@ -19,7 +20,8 @@ public   class  TestVolatile3 {
         };      
         t1.start();      
         Thread t2=new  Thread(){      
-            public   void  run(){      
+            @Override
+			public   void  run(){      
                 System.out.println("t2 start" );      
                 for (;;){      
                     volObj.swap();      

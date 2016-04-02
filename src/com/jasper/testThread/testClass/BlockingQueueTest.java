@@ -8,6 +8,7 @@ public class BlockingQueueTest {
 		final BlockingQueue queue = new ArrayBlockingQueue(3);
 		for(int i=0;i<2;i++){
 			new Thread(){
+				@Override
 				public void run(){
 					while(true){
 						try {
@@ -27,6 +28,7 @@ public class BlockingQueueTest {
 		}
 		
 		new Thread(){
+			@Override
 			public void run(){
 				while(true){
 					try {
