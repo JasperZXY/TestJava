@@ -2,6 +2,7 @@ package com.jasper.JDK8;
 
 import java.util.Comparator;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -59,7 +60,20 @@ public class Utils {
 		System.out.println(comparator.compare(i1, i2));   // <0
 		System.out.println(comparator.reversed().compare(i1, i2));  // >0
 
-
+		/**
+		 * Optional 不是函数是接口，这是个用来防止NullPointerException异常的辅助类型，
+		 * 这是下一届中将要用到的重要概念，现在先简单的看看这个接口能干什么：
+		 * Optional 被定义为一个简单的容器，其值可能是null或者不是null。
+		 * 在Java 8之前一般某个函数应该返回非空对象但是偶尔却可能返回了null，
+		 * 而在Java 8中，不推荐你返回null而是返回Optional。
+		 */
+		System.out.println("Optional 接口");
+		Optional<String> optional = Optional.of("bam");
+		System.out.println(optional.isPresent());;           // true
+		System.out.println(optional.get());;                 // "bam"
+		System.out.println(optional.orElse("fallback"));;    // "bam"
+		optional.ifPresent((s) -> System.out.println(s.charAt(0)));    // "b"
+		
 	}
 	
 	static class Person {
