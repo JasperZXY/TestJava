@@ -8,6 +8,15 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+/**
+ * Function<T, R> -T作为输入，返回的R作为输出<br/>
+ * Predicate<T> -T作为输入，返回的boolean值作为输出<br/>
+ * Consumer<T> - T作为输入，执行某种动作但没有返回值<br/>
+ * Supplier<T> - 没有任何输入，返回T<br/>
+ * BinaryOperator<T> -两个T作为输入，返回一个T作为输出，对于“reduce”操作很有用
+ * @author Jasper
+ *
+ */
 public class Utils {
 	public static void main(String[] args) {
 		/*
