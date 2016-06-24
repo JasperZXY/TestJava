@@ -49,6 +49,14 @@ public class Lambda {
 			e.printStackTrace();
 		}
 
+		try {
+			// 为了看在Lambda抛异常会是怎样的
+			String x = null;
+			Collections.sort(names, (a, b) -> x.compareTo(a));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

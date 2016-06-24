@@ -27,7 +27,7 @@ public class TestStream {
 		stringCollection.add("bbb2");
 		stringCollection.add("ddd1");
 		System.out.println("data:" + stringCollection);
-		
+
 		// Filter 过滤
 		System.out.println("=====Filter 过滤=====");
 		stringCollection
@@ -106,7 +106,62 @@ public class TestStream {
 		long t3 = System.nanoTime();
 		long millis2 = TimeUnit.NANOSECONDS.toMillis(t3 - t2);
 		System.out.println(String.format("parallel sort took: %d ms", millis2));
-		
+
+		System.out.println("========性能测试========");
+		Collections.shuffle(stringCollection);
+		stringCollection
+				.stream()
+				.filter((s) -> s.startsWith("a"))
+				.forEach(System.out::println);
+
+		long sum1 = 0;
+		long sum2 = 0;
+		long sum3 = 0;
+		for (int i=0; i<10000; i++) {
+			long curTime1 = System.nanoTime();
+			stringCollection
+					.stream()
+					.filter((s) -> s.startsWith("a"))
+					.forEach(System.out::println);
+			long curTime2 = System.nanoTime();
+			sum1 += (curTime2 - curTime1);
+
+			for (int j=0; j<stringCollection.size(); j++) {
+				if (stringCollection.get(j).startsWith("a")) {
+					System.out.println(stringCollection.get(j));
+				}
+			}
+			long curTime3 = System.nanoTime();
+			sum2 += (curTime3 - curTime2);
+
+			for (String s : stringCollection) {
+				if (s.startsWith("a")) {
+					System.out.println(s);
+				}
+			}
+			long curTime4 = System.nanoTime();
+			sum3 += (curTime4 - curTime3);
+		}
+
+		/**
+		 * 10000次
+		 * sum1:60048658
+		 * sum2:53022839
+		 * sum3:54946902
+		 *
+		 * 1000000次
+		 * sum1:4949164190
+		 * sum2:4893336835
+		 * sum3:4924789351
+		 *
+		 * 结果：对于ArrayList，用for(i++)方式操作是最快的，用foreach次之，用stream()是最慢的
+		 *
+ 		 */
+		System.out.println("========性能测试结果========");
+		System.out.println("sum1:" + sum1);
+		System.out.println("sum2:" + sum2);
+		System.out.println("sum3:" + sum3);
+
 	}
 
 }
