@@ -15,6 +15,7 @@ public class Test {
 		System.out.println(5^3);
 		System.out.println(4|2);
 
+		System.out.println(System.currentTimeMillis() / 1000);
 	}
 
 	private Integer id;
