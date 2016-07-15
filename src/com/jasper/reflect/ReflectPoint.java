@@ -1,4 +1,5 @@
 package com.jasper.reflect;
+import java.awt.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -15,7 +16,9 @@ public class ReflectPoint {
 		return "abc";
 	}
 
+	// 反射设置x的值，并不会调用这行代码
 	public void setX(int x) {
+		System.out.println("setX:" + x);
 		this.x = x;
 	}
 
@@ -41,9 +44,11 @@ public class ReflectPoint {
 		System.out.println(fieldY.get(point));
 //		Field x = Class.forName("ReflectPoint").getField("x");
 		Field fieldX = Class.forName(className).getDeclaredField("x");
+		System.out.println("x:" + fieldX.get(point));
+		fieldX.set(point, 100);
 //		x.setAccessible(true);
-		System.out.println(fieldX.get(point));
-		
+		System.out.println("x:" + fieldX.get(point));
+
 		Field yy = point.getClass().getField("y");
 		
 		Field zz = point.getClass().getDeclaredField("z");

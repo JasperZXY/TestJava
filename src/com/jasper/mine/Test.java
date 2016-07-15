@@ -16,6 +16,9 @@ public class Test {
 		System.out.println(4|2);
 
 		System.out.println(System.currentTimeMillis() / 1000);
+
+		Integer a = null;
+		System.out.println(String.valueOf(a));
 	}
 
 	private Integer id;
