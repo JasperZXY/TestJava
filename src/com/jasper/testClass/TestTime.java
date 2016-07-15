@@ -28,7 +28,11 @@ public class TestTime {
 		System.out.println(calendar.get(Calendar.DATE));
 		
 		System.out.println(format.format(new Date(1422497100000L)));
-		
+
+		System.out.println(new java.sql.Date(System.currentTimeMillis()));
+		System.out.println(new java.sql.Time(System.currentTimeMillis()));
+		System.out.println(new java.sql.Timestamp(System.currentTimeMillis()));
+
 	}
 
 }
