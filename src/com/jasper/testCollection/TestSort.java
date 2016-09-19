@@ -1,8 +1,7 @@
 package com.jasper.testCollection;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.text.Collator;
+import java.util.*;
 
 public class TestSort {
 	
@@ -16,6 +15,14 @@ public class TestSort {
 		Collections.sort(list);
 		System.out.println(list);
 		System.out.println(new Item(2).compareTo(new Item(1)) > 0);
+
+		// 中文排序
+		List<String> chineseNames = new ArrayList<>(Arrays.asList("张三", "李四", "王五", "赵六"));
+		System.out.println(chineseNames);
+		Collections.shuffle(chineseNames);
+		System.out.println(chineseNames);
+		Collections.sort(chineseNames, Collator.getInstance(java.util.Locale.CHINA));
+		System.out.println(chineseNames);
 	}
 	
 	public static class Item implements Comparable<Item> {
