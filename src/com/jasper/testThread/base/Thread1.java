@@ -1,4 +1,4 @@
-package com.jasper.testThread;
+package com.jasper.testThread.base;
 
 public class Thread1 implements Runnable {  
     @Override

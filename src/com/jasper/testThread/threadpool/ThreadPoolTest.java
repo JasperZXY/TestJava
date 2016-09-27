@@ -1,4 +1,4 @@
-package com.jasper.testThread;
+package com.jasper.testThread.threadpool;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

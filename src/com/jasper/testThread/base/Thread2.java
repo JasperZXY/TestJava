@@ -1,4 +1,4 @@
-package com.jasper.testThread;
+package com.jasper.testThread.base;
 
 public class Thread2 {
 	public void m4t1() {
