@@ -116,7 +116,7 @@ public class TestList {
 		List<Integer> list1 = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5));
 		List<String> list2 = new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5"));
 		for (int i=0; i<list1.size(); i++) {
-			System.out.println(i + "->" + list1.get(i));
+			System.out.println("size:" + list1.size() + " " + i + "->" + list1.get(i));
 			if (list1.get(i) == 2 || list1.get(i) == 5) {
 				list1.remove(i);
 				list2.remove(i);

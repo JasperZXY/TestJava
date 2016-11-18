@@ -19,6 +19,7 @@ public class Test {
 
 		Integer a = null;
 		System.out.println(String.valueOf(a));
+		System.out.println(Runtime.getRuntime().availableProcessors());
 	}
 
 	private Integer id;
