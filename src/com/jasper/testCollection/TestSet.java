@@ -1,5 +1,6 @@
 package com.jasper.testCollection;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,6 +18,22 @@ public class TestSet {
 //		System.out.println(set.contains(bString));
 //		TreeSet<String> aa = new TreeSet<String>();
 		m1();
+
+		Set<Integer> set = new HashSet<>();
+		set.add(1000);
+		set.add(10001);
+		int a = 10001;
+		System.out.println(set.contains(a));
+		System.out.println(set.contains(1000));
+		System.out.println(set.contains(1002));
+
+		String[] ips = "255.255.255.255".split("\\.");
+		long value = toLong(ips[3]) + (toLong(ips[2]) << 8) + (toLong(ips[1]) << 16) + (toLong(ips[0]) << 24);
+		System.out.println(value);
+	}
+
+	private static long toLong(String str) {
+		return Long.parseLong(str);
 	}
 	
 	public static void m() {

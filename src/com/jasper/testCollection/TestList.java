@@ -1,11 +1,6 @@
 package com.jasper.testCollection;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.junit.Test;
@@ -134,7 +129,54 @@ public class TestList {
 		}
 		System.out.println(list2);
 	}
-	
+
+	// 删除用用迭代器或者index从后往前遍历
+	@Test
+	public void testRemove2() {
+		List<Integer> list;
+
+		list = new ArrayList<>();
+		System.out.println("start");
+		for (int i=0; i<list.size(); i++) {
+			System.out.println("x:" + i);
+		}
+		System.out.println("end");
+
+		// 测试，不能满足需求，理论[2]，结果[2, 4]
+		list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+		System.out.println("start " + list);
+		for (int i=0; i<list.size(); i++) {
+			System.out.println(list.get(i));
+			if (!list.get(i).equals(Integer.valueOf(2))) {
+				list.remove(i);
+			}
+		}
+		System.out.println("end  " + list);
+
+		// 测试，满足需求
+		list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+		System.out.println("start " + list);
+		for (int i=list.size() - 1; i>=0; i--) {
+			System.out.println(list.get(i));
+			if (!list.get(i).equals(2)) {
+				list.remove(i);
+			}
+		}
+		System.out.println("end  " + list);
+
+		list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+		System.out.println("start " + list);
+		Iterator<Integer> iterator = list.iterator();
+		while (iterator.hasNext()) {
+			Integer a = iterator.next();
+			System.out.println(a);
+			if (!a.equals(2)) {
+				iterator.remove();
+			}
+		}
+		System.out.println("end  " + list);
+	}
+
 	@Test
 	public void testSet() {
 		List<Integer> list = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5));

@@ -19,8 +19,11 @@ public class TestMD5 {
 		System.out.println(Arrays.toString(b));
 		// 通常还要用base64将其转换为字符串
 		System.out.println(Base64.encodeBase64String(b));
-		System.out.println(MD5("1234567"));
-		System.out.println(MD5("1"));
+		System.out.println("MD5V1:" + MD5V1("1234567"));
+		System.out.println("MD5V2:" + MD5V2("1234567"));
+		System.out.println("MD5V3:" + MD5V3("123456", "7"));
+		System.out.println("MD5V3:" + MD5V3("234567", "1"));	// 测试结果update相当于digest的时候在字符串前面加一段
+		System.out.println(MD5V1("1"));
 	}
 
 	public static byte[] decode(String str) {
@@ -35,28 +38,51 @@ public class TestMD5 {
 		return md5.digest();
 	}
 
-	public static String MD5(String inStr) {
+	public static String MD5V1(String inStr) {
 		MessageDigest md5 = null;
 		try {
 			md5 = MessageDigest.getInstance("MD5");
 		} catch (Exception e) {
-			System.out.println(e.toString());
 			e.printStackTrace();
 			return "";
 		}
-//		char[] charArray = inStr.toCharArray();
-//		byte[] byteArray = new byte[charArray.length];
-//
-//		for (int i = 0; i < charArray.length; i++)
-//			byteArray[i] = (byte) charArray[i];
-		byte[] byteArray = inStr.getBytes();
 
-		byte[] md5Bytes = md5.digest(byteArray);
+		byte[] md5Bytes = md5.digest(inStr.getBytes());
 
+		return byteToString(md5Bytes);
+	}
+
+	public static String MD5V2(String inStr) {
+		MessageDigest md5 = null;
+		try {
+			md5 = MessageDigest.getInstance("MD5");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+
+		md5.update(inStr.getBytes());
+		return byteToString(md5.digest());
+	}
+
+	public static String MD5V3(String inStr, String salt) {
+		MessageDigest md5 = null;
+		try {
+			md5 = MessageDigest.getInstance("MD5");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+
+		md5.update(salt.getBytes());
+		return byteToString(md5.digest(inStr.getBytes()));
+	}
+
+	private static String byteToString(byte[] bytes) {
 		StringBuffer hexValue = new StringBuffer();
 
-		for (int i = 0; i < md5Bytes.length; i++) {
-			int val = (md5Bytes[i]) & 0xff;
+		for (int i = 0; i < bytes.length; i++) {
+			int val = (bytes[i]) & 0xff;
 			if (val < 16)
 				hexValue.append("0");
 			hexValue.append(Integer.toHexString(val));
