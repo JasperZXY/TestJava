@@ -1,18 +1,22 @@
 package com.jasper.mine;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Test {
-	public static void main(String[] args) throws Exception {
-		List<Object> list = new LinkedList<>();
-		for (int i=0; i<1000000; i++) {
-			Object object = new Object[1024];
-			list.add(object);
-			Thread.sleep(100);
-		}
-		System.gc();
+
+	public static void main(String[] args) {
+		System.out.println(System.getSecurityManager());
 	}
 
 }
 
+class TestSuperClass {
+	static {
+		System.out.println("super class");
+	}
+	public static int value = 2;
+}
+
+class TestSubClass extends TestSuperClass {
+	static {
+		System.out.println("sub class");
+	}
+}
