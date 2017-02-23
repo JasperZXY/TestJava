@@ -14,7 +14,9 @@ public class TestMap {
 		    map.putIfAbsent(i, "val" + i);
 		}
 		System.out.println(map);
-		
+		System.out.println(map.putIfAbsent(0, "0"));
+		System.out.println(map);
+
 		map.forEach((id, val) -> System.out.println(id + ":" + val));
 		
 		map.computeIfPresent(3, (num, val) -> val + num);
@@ -30,9 +32,9 @@ public class TestMap {
 		
 		// 键跟值匹配才会删除
 		map.remove(3, "val3");
-		System.out.println(map.get(3));;             // val33
+		System.out.println(map.get(3));             // val33
 		map.remove(3, "val33");
-		System.out.println(map.get(3));;             // null
+		System.out.println(map.get(3));             // null
 		
 		System.out.println(map.getOrDefault(42, "not found"));
 		

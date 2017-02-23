@@ -28,12 +28,13 @@ public class CallableAndFuture {
 			e.printStackTrace();
 		}
 		System.out.println("==============");
+		threadPool.shutdown();
 
 		//下面模拟返回多个数值
 		ExecutorService threadPool2 = Executors.newFixedThreadPool(10);
 		CompletionService<Integer> completionService = new ExecutorCompletionService<Integer>(
 				threadPool2);
-		for (int i = 1; i < 10; i++) {
+		for (int i = 0; i < 10; i++) {
 			final int j = i;
 			completionService.submit(new Callable<Integer>() {
 				@Override
@@ -45,7 +46,7 @@ public class CallableAndFuture {
 		}
 		for(int i=0; i<10; i++) {
 			try {
-				System.out.println(completionService.take().get());
+				System.out.println(i + " " + completionService.take().get());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} catch (ExecutionException e) {
@@ -53,6 +54,7 @@ public class CallableAndFuture {
 			}
 		}
 		System.out.println("============");
+		threadPool2.shutdown();
 	}
 
 }
