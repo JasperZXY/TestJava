@@ -13,7 +13,7 @@ public class TestPM {
 	}
 	
 	/**
-	 * 匹配java开头的字符串
+	 * 匹配数字+java开头的字符串
 	 * matches()尝试将整个区域与模式匹配。如果匹配就返回true，否则返回false
 	 */
 	public static void m1() {
