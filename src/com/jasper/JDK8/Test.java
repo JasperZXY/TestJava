@@ -12,5 +12,6 @@ public class Test {
             return b.compareTo(a);
         });
         names.parallelStream().filter(w -> w.length() > 12).count();
+
     }
 }

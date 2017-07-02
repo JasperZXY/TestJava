@@ -122,6 +122,8 @@ public class TestStream {
         Stream<Character> result2 = words.stream().flatMap(w -> characterStream(w));
         System.out.println("result2:" + Arrays.asList(result2.toArray()));
 
+        words.parallelStream().count();
+
         // 并行Streams
         System.out.println("=====并行Streams=====");
 
@@ -132,7 +134,7 @@ public class TestStream {
             values.add(uuid.toString());
         }
 
-        // 窜行排序
+        // 串行排序
         Collections.shuffle(values);
         long t0 = System.nanoTime();
         long count = values.stream().sorted().count();
