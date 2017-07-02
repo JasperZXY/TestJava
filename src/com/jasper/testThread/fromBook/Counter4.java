@@ -70,7 +70,7 @@ public class Counter4 extends Applet {
 
 	public static void main(String[] args) {
 		Counter4 applet = new Counter4();
-		// This isn't an applet, so set the flag and
+		// This isn'data an applet, so set the flag and
 		// produce the parameter values from args:
 		applet.isApplet = false;
 		applet.size = (args.length == 0 ? 5 : Integer.parseInt(args[0]));

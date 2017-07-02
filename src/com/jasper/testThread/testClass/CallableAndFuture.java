@@ -19,9 +19,9 @@ public class CallableAndFuture {
 				return "Hello";
 			}
 		});
-		System.out.println("Waiting result!");
+		System.out.println("Waiting data!");
 		try {
-			System.out.println("The result is " + future.get());
+			System.out.println("The data is " + future.get());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (ExecutionException e) {

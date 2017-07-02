@@ -14,15 +14,15 @@ public class InitAndDestroyOrder {
 }
 class A {
 	public A() {
-		System.out.println("A");
+		System.out.println("MyBean");
 		m();
 	}
 	public void m() {
-		System.out.println("m in A");
+		System.out.println("m in MyBean");
 	}
 	@Override
 	protected void finalize() throws Throwable {
-		System.out.println("A finalize");
+		System.out.println("MyBean finalize");
 		super.finalize();
 	}
 }

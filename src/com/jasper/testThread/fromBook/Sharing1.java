@@ -124,7 +124,7 @@ public class Sharing1 extends Applet {
 
 	public static void main(String[] args) {
 		Sharing1 applet = new Sharing1();
-		// This isn't an applet, so set the flag and
+		// This isn'data an applet, so set the flag and
 		// produce the parameter values from args:
 		applet.isApplet = false;
 		applet.numCounters = (args.length == 0 ? 5 : Integer.parseInt(args[0]));

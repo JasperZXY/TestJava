@@ -18,7 +18,7 @@ class Daemon extends Thread {
 		for (int i = 0; i < SIZE; i++)
 			t[i] = new DaemonSpawn(i);
 		for (int i = 0; i < SIZE; i++)
-			System.out.println("t[" + i + "].isDaemon() = " + t[i].isDaemon());
+			System.out.println("data[" + i + "].isDaemon() = " + t[i].isDaemon());
 //		while (true)
 //			yield();
 	}

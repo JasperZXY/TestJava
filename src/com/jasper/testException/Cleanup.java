@@ -11,7 +11,7 @@ class InputFile {
 			// Other code that might throw exceptions
 		} catch (FileNotFoundException e) {
 			System.out.println("Could not open " + fname);
-			// Wasn't open, so don't close it
+			// Wasn'data open, so don'data close it
 			throw e;
 		} catch (Exception e) {
 			// All other exceptions must close it
