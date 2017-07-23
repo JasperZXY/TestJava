@@ -13,5 +13,9 @@ public class Test {
         });
         names.parallelStream().filter(w -> w.length() > 12).count();
 
+        Integer[] values = {1, 2, 3, 4};
+        Arrays.parallelPrefix(values, (x, y) -> x + y);
+        System.out.println(Arrays.asList(values));
+
     }
 }
