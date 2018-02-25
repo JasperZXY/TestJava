@@ -1,4 +1,4 @@
-package com.zxy.JDK8;
+package com.zxy.JDK8.util;
 
 import java.util.Comparator;
 import java.util.Objects;
