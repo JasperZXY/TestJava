@@ -75,6 +75,10 @@ public class TestStream {
                 .count();
         System.out.println(startsWithB);    // 3
 
+        // of
+        System.out.println("=====of=====");
+        System.out.println(Stream.of(1, 2, 3).collect(Collectors.toList()));
+
         // collect
         System.out.println("=====collect=====");
         Map<Integer, Set<String>> collectResult = stringCollection
