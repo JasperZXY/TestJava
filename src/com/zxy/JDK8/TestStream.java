@@ -3,7 +3,9 @@ package com.zxy.JDK8;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
 
 /**
  * java.util.Stream 表示能应用在一组元素上一次执行的操作序列。
@@ -15,6 +17,7 @@ import java.util.stream.Stream;
  * @author Jasper
  */
 public class TestStream {
+
     public static void main(String[] args) {
         List<String> stringCollection = new ArrayList<>();
         stringCollection.add("dddd2");
@@ -29,51 +32,34 @@ public class TestStream {
 
         // Filter 过滤
         System.out.println("=====Filter 过滤=====");
-        stringCollection
-                .stream()
-                .filter((s) -> s.startsWith("a"))
-                .forEach(System.out::println);
+        stringCollection.stream().filter((s) -> s.startsWith("a")).forEach(System.out::println);
 
         // Sort 排序
         System.out.println("=====Sort 排序=====");
-        stringCollection
-                .stream()
-                .sorted()
-                .filter((s) -> s.startsWith("a"))
-                .forEach(System.out::println);
+        stringCollection.stream().sorted().filter((s) -> s.startsWith("a")).forEach(System.out::println);
         System.out.println("data:" + stringCollection);  //排序没变
 
         // Map 映射
         System.out.println("=====Map 映射=====");
-        stringCollection
-                .stream()
-                .map(String::toUpperCase)
-                .sorted((a, b) -> b.compareTo(a))
-                .forEach(System.out::println);
+        stringCollection.stream().map(String::toUpperCase).sorted((a, b) -> b.compareTo(a)).forEach(System.out::println);
 
         // Match 匹配
         System.out.println("=====Match 匹配=====");
-        boolean anyStartsWithA = stringCollection
-                .stream()
-                .anyMatch((s) -> s.startsWith("a"));
+        boolean anyStartsWithA = stringCollection.stream().anyMatch((s) -> s.startsWith("a"));
         System.out.println(anyStartsWithA);      // true
-        boolean allStartsWithA =
-                stringCollection
-                        .stream()
-                        .allMatch((s) -> s.startsWith("a"));
+        boolean allStartsWithA = stringCollection.stream().allMatch((s) -> s.startsWith("a"));
         System.out.println(allStartsWithA);      // false
-        boolean noneStartsWithZ = stringCollection
-                .stream()
-                .noneMatch((s) -> s.startsWith("z"));
+        boolean noneStartsWithZ = stringCollection.stream().noneMatch((s) -> s.startsWith("z"));
         System.out.println(noneStartsWithZ);      // true
 
         // Count 计数
         System.out.println("=====Count 计数=====");
-        long startsWithB = stringCollection
-                .stream()
-                .filter((s) -> s.startsWith("b"))
-                .count();
+        long startsWithB = stringCollection.stream().filter((s) -> s.startsWith("b")).count();
         System.out.println(startsWithB);    // 3
+
+        // sum
+        System.out.println("=====sum=====");
+        System.out.println(IntStream.range(1, 5).sum());
 
         // of
         System.out.println("=====of=====");
@@ -81,42 +67,45 @@ public class TestStream {
 
         // collect
         System.out.println("=====collect=====");
-        Map<Integer, Set<String>> collectResult = stringCollection
-                .stream()
-                .collect(Collectors.toMap(String::length, Collections::singleton, (set1, set2) -> {
-                    Set<String> set = new HashSet<>(set1);
-                    set.addAll(set2);
-                    return set;
-                }));
+        Map<Integer, Set<String>> collectResult = stringCollection.stream().collect(Collectors.toMap(String::length, Collections::singleton, (set1, set2) -> {
+            Set<String> set = new HashSet<>(set1);
+            set.addAll(set2);
+            return set;
+        }));
         System.out.println(collectResult);
 
         List<Integer> nums = Arrays.asList(1, 1, null, 2, 3, 4, null, 5, 6, 7, 8, 9, 10);
         List<Integer> numsWithoutNull = nums.stream().filter(num -> num != null).collect(Collectors.toList());
         System.out.println(numsWithoutNull);
 
+        // reduce
+        System.out.println("=====reduce=====");
+        System.out.println(Stream.of(new String[]{}).reduce(String::concat));
+        System.out.println(Stream.of("1", "2", "3").reduce(String::concat));
+        // identity这个参数可以认为是起始值
+        System.out.println(Stream.of("1", "2", "3").reduce("x", String::concat));
+
         // groupBy
         System.out.println("=====groupBy=====");
-        stringCollection.stream()
-                .collect(Collectors.groupingBy(String::length))
-                .forEach((length, list) -> System.out.println("长度为" + length + "的有" + list));
-        Map<Integer, List<String>> groupByResult = stringCollection.stream()
-                .collect(Collectors.groupingBy(String::length));
+        stringCollection.stream().collect(Collectors.groupingBy(String::length)).forEach((length, list) -> System.out.println("长度为" + length + "的有" + list));
+        Map<Integer, List<String>> groupByResult = stringCollection.stream().collect(Collectors.groupingBy(String::length));
         System.out.println(groupByResult);
-        Map<Integer, Set<String>> groupByResult2 = stringCollection.stream().collect(
-                Collectors.groupingBy(String::length,
-                        Collectors.mapping(String::toUpperCase, Collectors.toSet()))
-        );
+        Map<Integer, Set<String>> groupByResult2 = stringCollection.stream().collect(Collectors.groupingBy(String::length, Collectors.mapping(String::toUpperCase, Collectors.toSet())));
         System.out.println("groupByResult2:" + groupByResult2);
 
-        stringCollection.stream()
-                .filter(s -> s.length() >= 1)
-                .map(s -> Arrays.asList(s.substring(0, 1), s))
-                .collect(Collectors.groupingBy(list -> list.get(0)))
-                .forEach((start, list) -> {
-                    System.out.print("以" + start + "开头的字符串：");
-                    list.stream().forEach(data -> System.out.print(data.get(1) + ","));
-                    System.out.println("");
-                });
+        stringCollection.stream().filter(s -> s.length() >= 1).map(s -> Arrays.asList(s.substring(0, 1), s)).collect(Collectors.groupingBy(list -> list.get(0))).forEach((start, list) -> {
+            System.out.print("以" + start + "开头的字符串：");
+            list.stream().forEach(data -> System.out.print(data.get(1) + ","));
+            System.out.println("");
+        });
+
+        // groupBy 按年龄分组
+        User user1 = new User(1, "user1", 10);
+        User user2 = new User(2, "user2", 9);
+        User user3 = new User(3, "user3", 10);
+        List<User> userList = Arrays.asList(user1, user2, user3);
+        Map<Integer, List<User>> userAgeMap = userList.stream().collect(Collectors.groupingBy(User::getAge));
+        System.out.println("userAgeMap:" + userAgeMap);
 
         // map and flatMap
         System.out.println("map and flatMap");
@@ -158,20 +147,14 @@ public class TestStream {
 
         System.out.println("========性能测试========");
         Collections.shuffle(stringCollection);
-        stringCollection
-                .stream()
-                .filter((s) -> s.startsWith("a"))
-                .forEach(System.out::println);
+        stringCollection.stream().filter((s) -> s.startsWith("a")).forEach(System.out::println);
 
         long sum1 = 0;
         long sum2 = 0;
         long sum3 = 0;
         for (int i = 0; i < 10000; i++) {
             long curTime1 = System.nanoTime();
-            stringCollection
-                    .stream()
-                    .filter((s) -> s.startsWith("a"))
-                    .forEach(System.out::println);
+            stringCollection.stream().filter((s) -> s.startsWith("a")).forEach(System.out::println);
             long curTime2 = System.nanoTime();
             sum1 += (curTime2 - curTime1);
 
@@ -213,11 +196,55 @@ public class TestStream {
 
     }
 
+
     public static Stream<Character> characterStream(String s) {
         List<Character> result = new ArrayList<>();
         for (char c : s.toCharArray())
             result.add(c);
         return result.stream();
+    }
+
+
+    public static class User {
+
+        long id;
+
+        String name;
+
+        int age;
+
+
+        public long getId() {
+            return id;
+        }
+
+
+        public String getName() {
+            return name;
+        }
+
+
+        public int getAge() {
+            return age;
+        }
+
+
+        public User(long id, String name, int age) {
+            this.id = id;
+            this.name = name;
+            this.age = age;
+        }
+
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder("User{");
+            sb.append("id=").append(id);
+            sb.append(", name='").append(name).append('\'');
+            sb.append(", age=").append(age);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 }
