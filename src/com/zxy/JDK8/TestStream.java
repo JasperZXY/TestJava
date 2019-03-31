@@ -87,6 +87,7 @@ public class TestStream {
 
         // groupBy
         System.out.println("=====groupBy=====");
+        Map<Integer, List<String>> xx = stringCollection.stream().collect(Collectors.groupingBy(String::length));
         stringCollection.stream().collect(Collectors.groupingBy(String::length)).forEach((length, list) -> System.out.println("长度为" + length + "的有" + list));
         Map<Integer, List<String>> groupByResult = stringCollection.stream().collect(Collectors.groupingBy(String::length));
         System.out.println(groupByResult);
