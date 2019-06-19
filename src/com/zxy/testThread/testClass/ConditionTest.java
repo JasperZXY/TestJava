@@ -14,43 +14,69 @@ import java.util.concurrent.locks.ReentrantLock;
  *  当从缓冲区读出数据之后，唤醒"写线程"；
  */
 public class ConditionTest {
+
     public static void main(String[] args) {
         ReentrantLock lock = new ReentrantLock();
         Condition condition = lock.newCondition();
 
-        new Thread(() -> {
-            try {
-                lock.lock();
-                System.out.println("await start");
-                condition.await();
-                System.out.println("await end");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } finally {
-                lock.unlock();
-            }
-        }, "Thread1").start();
+        int count = 10;
 
-        // 为了确保Thread1比Thread2先运行
+        for (int i=1; i<=count; i++) {
+            final int index = i;
+            new Thread(() -> {
+                try {
+                    lock.lock();
+                    System.out.println("await start " + index);
+                    condition.await();
+                    System.out.println("await end " + index);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    lock.unlock();
+                }
+            }, "Thread" + index).start();
+        }
+
+        // 确保上面的线程要比下面的线程先执行
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
+//        new Thread(() -> {
+//            try {
+//                lock.lock();
+//                System.out.println("signal start");
+//                condition.signalAll();
+//                System.out.println("signal sleep " + System.currentTimeMillis());
+//                TimeUnit.SECONDS.sleep(1);
+//                System.out.println("signal end " +  + System.currentTimeMillis());
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            } finally {
+//                lock.unlock();
+//                System.out.println("signal unlock");
+//            }
+//        }, "Thread-signal").start();
+
         new Thread(() -> {
-            try {
-                lock.lock();
-                System.out.println("signal start");
-                condition.signal();
-                System.out.println("signal end");
-                TimeUnit.SECONDS.sleep(1);
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                lock.unlock();
-                System.out.println("signal unlock");
+            for (int i=1; i<=count; i++) {
+                try {
+                    lock.lock();
+                    System.out.println("signal start");
+                    condition.signal();
+                    System.out.println("signal sleep " + System.currentTimeMillis());
+                    TimeUnit.SECONDS.sleep(1);
+                    System.out.println("signal end " +  + System.currentTimeMillis());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    lock.unlock();
+                    System.out.println("signal unlock");
+                }
             }
-        }, "Thread2").start();
+        }, "Thread-signal").start();
+
     }
 }
