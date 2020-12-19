@@ -71,5 +71,66 @@ public class OptionalTest {
         System.out.println(optionalName.filter(val -> val.length() > 3).orElse("orElse more than 3"));
         System.out.println(optionalName.filter(val -> val.length() <= 3).orElse("orElse less than 3"));
 
+        System.out.println("=====级联操作=====");
+        User user = getUser();
+        String province = "province is null";
+        if (user != null) {
+            if (user.getAddress() != null) {
+                User.Address address = user.getAddress();
+                if (address.getProvince() != null) {
+                    province = address.getProvince().toUpperCase();
+                }
+            }
+        }
+        System.out.println(province);
+
+        province = Optional.ofNullable(user)
+                .map(User::getAddress)
+                .map(User.Address::getProvince)
+                .map(String::toUpperCase)
+                .orElse("province is null");
+        System.out.println(province);
+
+        province = Optional.ofNullable(user)
+                .flatMap(u -> Optional.ofNullable(u.getAddress()))
+                .flatMap(a -> Optional.ofNullable(a.getProvince()))
+                .map(String::toUpperCase)
+                .orElse("province is null");
+        System.out.println(province);
+
+    }
+
+    private static User getUser() {
+        User user = new User();
+        user.setAddress(new User.Address());
+        //user.getAddress().setProvince("广东");
+        return user;
+    }
+
+    private static class User {
+        private Address address;
+        public Address getAddress() {
+            return address;
+        }
+        public void setAddress(Address address) {
+            this.address = address;
+        }
+
+        private static class Address {
+            private String province;
+            private String city;
+            public String getProvince() {
+                return province;
+            }
+            public void setProvince(String province) {
+                this.province = province;
+            }
+            public String getCity() {
+                return city;
+            }
+            public void setCity(String city) {
+                this.city = city;
+            }
+        }
     }
 }
